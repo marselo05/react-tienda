@@ -1,1 +1,9 @@
 .nav-bar_titulo {color: red;}
+.cont-navbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+.cont-cart {box-sizing: border-box; padding: 0.5rem; }
+.cont-cart img {width: 25px;}
