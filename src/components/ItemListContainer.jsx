@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemList from './ItemList'
 
 class ItemListContainer extends React.Component {
 
@@ -9,11 +10,12 @@ class ItemListContainer extends React.Component {
 	render() 
 	{
 		return (
-			<h3>
-				{this.state.greeting}
-			</h3>
+			<ItemList />
 		); 
 	}
+			// <h3>
+			// 	{this.state.greeting}
+			// </h3>
 
 }
 
