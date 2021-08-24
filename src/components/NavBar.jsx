@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import './NavBar.css';
 import CartWidget from './CartWidget';
+
 
 function NavBar() 
 {
@@ -15,7 +17,9 @@ function NavBar()
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		  	<div className="container-fluid">
-		    	<p className="navbar-brand">React Sport</p>
+				<Link to='/'>
+					<p className="navbar-brand">React Sport</p>
+				</Link>	
 		    	<div className="cont-navbar">
 			    	<div className="navbar-toggler" onClick={ clickRealizado }>
 			      		<span className="navbar-toggler-icon"></span>
@@ -23,22 +27,22 @@ function NavBar()
 		    		<div className="navbar-collapse collapse" id="navbar-site">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 					        <li className="nav-item">
-					          	<p className="nav-link active">Hombre</p>
+								<Link to={'/'}>
+									<p className="nav-link active">Inicio</p>
+								</Link>
 					        </li>
 					        <li className="nav-item">
-					          	<p className="nav-link">Mujer</p>
+								<Link to={'/category/1'}>
+									<p className="nav-link">Ropa</p>
+								</Link>
 					        </li>
 					        <li className="nav-item">
-					          	<p className="nav-link">Niño</p>
+								<Link to={'/category/2'}>
+					          		<p className="nav-link">Accesorios</p>
+								</Link>
 					        </li>
 					        <li className="nav-item">
 					          	<p className="nav-link">Novedades</p>
-					        </li>
-					        <li className="nav-item">
-					          	<p className="nav-link">Marcas</p>
-					        </li>
-					        <li className="nav-item">
-					          	<p className="nav-link">Ofertas</p>
 					        </li>
 						</ul>
 					</div>

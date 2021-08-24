@@ -1,21 +1,35 @@
-import React from 'react';
-import ItemList from './ItemList'
+import React, {useEffect, useState} from "react";
+import { useParams } from "react-router";
+import ItemList from './ItemList';
+import { productsJson } from "../productsJson";
 
-class ItemListContainer extends React.Component {
+function ItemListContainer (props) 
+{
+	const [products, setProducts] = useState([]);
+    const { categoryId } = useParams();
 
-	state = {
-		greeting: 'hola'
-	};
+	useEffect(() => 
+    {
 
-	render() 
-	{
-		return (
-			<ItemList />
-		); 
-	}
-			// <h3>
-			// 	{this.state.greeting}
-			// </h3>
+        setTimeout( function() 
+        {
+			if (!categoryId) {
+				setProducts(productsJson);
+			}
+			else{
+				const result = productsJson.filter((item) =>  (item.categoryId === categoryId)  )
+            	setProducts(result);
+			}
+            	
+
+        }, 800);
+        
+    }, [categoryId]);
+
+	
+	return (
+		<ItemList products={products}/>
+	); 
 
 }
 
