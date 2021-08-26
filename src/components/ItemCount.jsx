@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Button from './Button';
 
-function ItemCount(props) 
+function ItemCount({ onAdd, items, stockItem}) 
 {
-	const [count, setCount] 	= useState(Number(props.initial));
-	const [stock] 				= useState(props.stock);
-
+	const [count] 				= useState(1);
+	const [stock] 				= useState(stockItem);
+	
 	useEffect(() => 
 	{
 	    // console.log("aca soy un componentDidMount");
@@ -15,41 +15,29 @@ function ItemCount(props)
 
   	}, [count]);
 
-  	function restar(count) {
-  		return () => {
-  			if (count>1) 
-  				setCount(count - 1)
-  		};
-  	} 
+  	const restar = () =>
+	{
+		if (items <= stock && items > 0) {
+			onAdd(items - 1);
+		}
+	};
 
-  	function sumar(count) {
-  		return () => {
-  			(count < stock ) ? onAdd() : console.log('Limite de stock');
-  		};
-  	} 
-
-  	function onAdd() {
-  		return setCount(count + 1);
-  	}
+  	const sumar = ()  => 
+	{
+		if (items < stock) 
+			onAdd(items + 1);
+	};
 	
-  	function handleSubmit(e) {
-	    e.preventDefault();
-	    console.log('You clicked submit.');
-	}
-
 	return (
-		<React.Fragment>
+		<>
 			<div className="cont-agregar-carrito">
-			<form onSubmit={handleSubmit} className="agregar-carrito">
-				<div>
-					<Button text="-" eventoClick={ restar(count) } />
-					<input type="number" value={ count } disabled />
-					<Button text="+" eventoClick={ sumar(count) } />
+				<div className="agregar-carrito">
+					<Button text="-" eventoClick={ restar } />
+					<input type="number" value={ items } disabled />
+					<Button text="+" eventoClick={ sumar } />
 				</div>
-				<button className="button-submit" type="submit">Agregar al carrito</button>
-			</form>
 			</div>
-		</React.Fragment>
+		</>
 	);
 }
 

@@ -7,10 +7,11 @@ function ItemListContainer (props)
 {
 	const [products, setProducts] = useState([]);
     const { categoryId } = useParams();
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => 
     {
-
+		setLoading(true);
         setTimeout( function() 
         {
 			if (!categoryId) {
@@ -20,12 +21,14 @@ function ItemListContainer (props)
 				const result = productsJson.filter((item) =>  (item.categoryId === categoryId)  )
             	setProducts(result);
 			}
-            	
-
+		
+			setLoading(false);
         }, 800);
         
     }, [categoryId]);
 
+	if( loading )
+		return <h1>Loading...</h1>;
 	
 	return (
 		<ItemList products={products}/>
