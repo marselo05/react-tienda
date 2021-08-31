@@ -8,6 +8,7 @@ export const productsJson =
         pictureUrl: '#url1',
         category: 'ropa',
         categoryId: '1',
+        stock: 5
     },
     {
         id: "2",
@@ -17,6 +18,7 @@ export const productsJson =
         pictureUrl: '#url2',
         category: 'accesorios',
         categoryId: '2',
+        stock: 3
     },
     {
         id: "3",
@@ -26,5 +28,6 @@ export const productsJson =
         pictureUrl: '#url1',
         category: 'ropa',
         categoryId: '1',
+        stock: 4
     },
 ]

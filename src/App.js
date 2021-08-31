@@ -5,24 +5,27 @@ import ItemListContainer from './components/ItemListContainer';
 // import ItemCount from './components/ItemCount';
 // import Category from './pages/Category';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { CartProvider } from './context/cartContext';
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/">
-          <ItemListContainer />
-        </Route>
-        <Route exact path="/category/:categoryId">
-          <ItemListContainer />
-        </Route>
-        <Route exact path="/item/:id">
-          <ItemDetailContainer />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <ItemListContainer />
+          </Route>
+          <Route exact path="/category/:categoryId">
+            <ItemListContainer />
+          </Route>
+          <Route exact path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

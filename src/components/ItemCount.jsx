@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from './Button';
+// import { Link } from "react-router-dom";
 
-function ItemCount({ onAdd, items, stockItem}) 
+function ItemCount({ stock, onAdd }) 
 {
-	const [count] 				= useState(1);
-	const [stock] 				= useState(stockItem);
+	const [count, setCount] 		= useState(1);
+	// const [stock] 				= useState(stockItem);
 	
-	useEffect(() => 
-	{
+	// useEffect(() => {
 	    // console.log("aca soy un componentDidMount");
-	    return () => {
-	      console.log("esto lo voy a hacer cuando ya no este en el DOM");
-	    };
-
-  	}, [count]);
+		// onAdd(count)
+  	// }, []);
 
   	const restar = () =>
 	{
-		if (items <= stock && items > 0) {
-			onAdd(items - 1);
-		}
+		if (count > 0) 
+			setCount(count - 1)
+		
 	};
 
   	const sumar = ()  => 
 	{
-		if (items < stock) 
-			onAdd(items + 1);
+		if ( count < stock) 
+			setCount(count + 1);
+		
 	};
 	
 	return (
@@ -33,10 +31,11 @@ function ItemCount({ onAdd, items, stockItem})
 			<div className="cont-agregar-carrito">
 				<div className="agregar-carrito">
 					<Button text="-" eventoClick={ restar } />
-					<input type="number" value={ items } disabled />
-					<Button text="+" eventoClick={ sumar } />
+					<input type="number" value={ count } disabled />
+					<Button text="+" eventoClick={ sumar }  />
 				</div>
 			</div>
+			{/* {count > 0 && <Link to={'/cart'}> terminar compra</Link>} */}
 		</>
 	);
 }
